@@ -1,7 +1,9 @@
-@import '_variable';
+@import "_variable";
 
 h1 {
   font-size: 2rem;
   color: $red-color;
-  background-color: $green-color;
+}
+.card-courses-item {
+  margin-top: 16px;
 }
