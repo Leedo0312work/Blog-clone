@@ -2,8 +2,8 @@ const { default: mongoose } = require("mongoose");
 const Schema = mongoose.Schema;
 //A library convert name to slug
 const slug = require("mongoose-slug-updater");
-//Add plugin
-mongoose.plugin(slug);
+//A library cover soft delete
+const mongooseDelete = require('mongoose-delete');
 
 const Course = new Schema(
   {
@@ -21,5 +21,13 @@ const Course = new Schema(
     timestamps: true,
   }
 );
+
+//Add plugin
+mongoose.plugin(slug);
+//Add plugin delete and override all methods to display 
+Course.plugin(mongooseDelete, {
+  overrideMethods: 'all',
+  deletedAt: true
+})
 
 module.exports = mongoose.model("Course", Course);
