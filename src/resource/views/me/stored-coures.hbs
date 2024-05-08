@@ -16,7 +16,7 @@
         <option value="delete">Xóa</option>
       </select>
 
-      <button class="btn btn-primary btn-sm check-all-submit-btn disabled">Thực hiện</button>
+      <button class="btn btn-primary btn-sm check-all-submit-btn" disabled>Thực hiện</button>
     </div>
 
     <table class='table'>
@@ -98,7 +98,7 @@
     var courseItemCheckBox = $('input[name="courseIds[]"]')
     var checkAllSubmitBtn = $('.check-all-submit-btn')
 
-    var containerForm = document.forms['container-form']
+    var containerForm = $('form[name="container-form"]')
 
 
     //When dialog confirm clicked
@@ -132,25 +132,12 @@
     function renderCheckAllSubmitBtn() {
       var checkedCount = $('input[name="courseIds[]"]:checked').length
       if (checkedCount) {
-        checkAllSubmitBtn.removeClass('disabled');
+        checkAllSubmitBtn.attr('disabled', false);
       }
       else {
-        checkAllSubmitBtn.addClass('disabled');
-
+        checkAllSubmitBtn.attr('disabled', true);
       }
     }
-
-
-
-    checkAllSubmitBtn.on('submit', function (e) {
-      var isSubmittable = !$(this).hasClass('disabled');
-      if (!isSubmittable) {
-        e.preventDefault() //Bỏ hành vi mặc định -> không submit nữa
-      }
-      else {
-        containerForm.submit()
-      }
-    })
 
 
   })

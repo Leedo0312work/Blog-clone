@@ -69,7 +69,6 @@ class CourseController {
     Course.restore({ _id: req.params.id })
       .then(() => res.redirect('back'))
       .catch(next);
-
   }
 
   //[POST] /courses/handle-form-actions
@@ -85,6 +84,23 @@ class CourseController {
     }
   }
 
+  //[POST] /courses/handle-trash-form
+  handleTrashForm(req, res, next) {
+    switch (req.body.action) {
+      case 'delete':
+        Course.deleteMany({ _id: { $in: req.body.courseIds } })
+          .then(() => res.redirect('back'))
+          .catch(next);
+        break;
+      case 'restore':
+        Course.restore({ _id: { $in: req.body.courseIds } })
+          .then(() => res.redirect('back'))
+          .catch(next);
+        break;
+      default:
+        res.json({ message: 'Action invalid!!' })
+    }
+  }
 
 }
 
