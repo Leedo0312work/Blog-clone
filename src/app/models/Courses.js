@@ -5,7 +5,7 @@ const slug = require("mongoose-slug-updater");
 //A library cover soft delete
 const mongooseDelete = require('mongoose-delete');
 
-const Course = new Schema(
+const CourseScheme = new Schema(
   {
     name: { type: String, require: true },
     description: { type: String, maxLength: 600 },
@@ -22,12 +22,24 @@ const Course = new Schema(
   }
 );
 
+//Custome query helper
+CourseScheme.query.sortable = function (req) {
+  if (req.query.hasOwnProperty('_sort')) {
+    //Validate query
+    const isValidateType = ['asc', 'desc'].includes(req.query.type)
+    return this.sort({
+      [req.query.column]: isValidateType ? req.query.type : 'desc'
+    })
+  }
+  return this
+}
+
 //Add plugin
 mongoose.plugin(slug);
 //Add plugin delete and override all methods to display 
-Course.plugin(mongooseDelete, {
+CourseScheme.plugin(mongooseDelete, {
   overrideMethods: 'all',
   deletedAt: true
 })
 
-module.exports = mongoose.model("Course", Course);
+module.exports = mongoose.model("Course", CourseScheme);
