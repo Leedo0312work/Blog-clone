@@ -5,10 +5,6 @@ module.exports = function SortMiddleware(req, res, next) {
     };
 
     if (req.query.hasOwnProperty('_sort')) {
-        // res.locals._sort.enabled = true,
-        //     res.locals._sort.type = req.query.type,
-        //     res.locals._sort.column = req.query.column
-
         //Objects merge in order from right to left
         Object.assign(res.locals._sort, {
             enabled: true,

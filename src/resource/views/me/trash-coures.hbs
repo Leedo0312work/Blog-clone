@@ -26,9 +26,18 @@
             <tr>
                 <td></td>
                 <th scope='col'>#</th>
-                <th scope='col'>Course name</th>
-                <th scope='col'>Level</th>
-                <th scope='col'>Delete at</th>
+                <th scope='col'>
+                    Course name
+                    {{!-- {{{sortable 'name' _sort}}} --}}
+                </th>
+                <th scope='col'>
+                    Level
+                    {{!-- {{{sortable 'level' _sort}}} --}}
+                </th>
+                <th scope='col'>
+                    Delete at
+                    {{!-- {{{sortable 'deleteAt' _sort}}} --}}
+                </th>
                 <th scope='col'></th>
             </tr>
         </thead>
@@ -37,13 +46,13 @@
             <tr>
                 <td>
                     <div class="form-check">
-                        <input class="form-check-input" type="checkbox" value="{{this._id}}" name="courseIds[]">
+                        <input class="form-check-input" type="checkbox" name="courseIds[]" value="{{this._id}}">
                     </div>
                 </td>
                 <th scope='row'>{{sum @index 1}}</th>
                 <td>{{this.name}}</td>
                 <td>{{this.level}}</td>
-                <td>{{this.deletedAt}}</td>
+                <td>{{formatTime this.deletedAt}}</td>
                 <td>
                     <a href='' class='btn btn-link btn-restore' data-id="{{this._id}}">Restore</a>
                     {{!-- Định nghĩa trường data-id để lấy dữ liệu --}}
@@ -51,7 +60,6 @@
                         data-id='{{this._id}}'>Destroy</a>
                 </td>
             </tr>
-
             {{else}}
             <tr>
                 <td colspan="5" class="text-center">
@@ -87,7 +95,7 @@
 </div>
 
 {{!-- Restore hidden form --}}
-{{!-- Mục đích tạo form trống là để submit form với phương thức post --}}
+{{!-- submit form with post method --}}
 <form name="delete-course-form" method="POST"></form>
 <form name="restore-course-form" method="POST"></form>
 

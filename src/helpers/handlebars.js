@@ -1,4 +1,5 @@
 const Handlebars = require('handlebars');
+const moment = require('moment');
 
 module.exports = {
     sum: (a, b) => a + b,
@@ -28,6 +29,10 @@ module.exports = {
             return str.substring(0, len) + '...';
         }
         return str;
+    },
+
+    formatTime: (time) => {
+        return moment(time).format('MMMM DD YYYY, HH:mm:ss');
     }
 };
 

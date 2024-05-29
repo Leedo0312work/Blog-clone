@@ -15,21 +15,10 @@ class MeController {
         res.render("me/stored-coures", { deletedCount, courses: multipleMongooseToObject(courses) })
       )
       .catch(next);
-
-    // Course.countDocumentsDeleted()
-    //   .then((deletedCount) => {
-    //     console.log(deletedCount)
-    //   })
-    //   .catch(()=>{})
-
-    // Course.find({})
-    //   .then((courses) =>
-    //     res.render("me/stored-coures", {
-    //       courses: multipleMongooseToObject(courses),
-    //     })
-    //   )
-    //   .catch(next);
   }
+
+
+
   //[GET] me/trash/courses
   trashCourses(req, res, next) {
     Course.findWithDeleted({ deleted: true })
@@ -38,8 +27,11 @@ class MeController {
           courses: multipleMongooseToObject(courses),
         })
       )
-      .catch(next);
+      .catch(next)
+    
   }
 }
 
 module.exports = new MeController();
+
+
