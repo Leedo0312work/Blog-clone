@@ -9,7 +9,7 @@ module.exports = function SortMiddleware(req, res, next) {
         //     res.locals._sort.type = req.query.type,
         //     res.locals._sort.column = req.query.column
 
-        //Hợp nhất object theo thứ tự từ phải sang trái
+        //Objects merge in order from right to left
         Object.assign(res.locals._sort, {
             enabled: true,
             type: req.query.type,

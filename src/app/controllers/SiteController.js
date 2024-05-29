@@ -11,11 +11,6 @@ class NewsController {
       })
       .catch((error) => next(error));
   }
-
-  //[GET] /site/search
-  search(req, res) {
-    res.render("search");
-  }
 }
 
 module.exports = new NewsController();
