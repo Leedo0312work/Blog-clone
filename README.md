@@ -18,15 +18,13 @@ To download and run the code, follow these steps:
 git clone [https://github.com/your_username/course-management-system.git](https://github.com/Leedo0312work/Course-funct.git)
 ```
 
-2. Navigate to your project directory
-
-3. Install dependencies:
+2. Navigate to your project directory and install dependencies:
 
 ```
 npm install
 ```
 
-4. Start the server:
+3. Start the server:
 
 ```
 npm start
@@ -38,13 +36,3 @@ npm start
 - `npm run beautiful`: Runs lint-staged for code formatting.
 - `npm run watch`: Watches SCSS files and compiles them to CSS.
 - `npm test`: Placeholder for running tests (no tests specified).
-
-## Contributors
-- LeeDo
-
-## License
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
-
----
-
-Hãy thay đổi các phần như `your_username`, `Your Name`, và `course-management-system` thành thông tin thực của dự án của bạn. Đồng thời, hãy bổ sung bất kỳ thông tin bổ sung nào cần thiết về dự án của bạn, như hướng dẫn sử dụng API hoặc tùy chỉnh cài đặt.
