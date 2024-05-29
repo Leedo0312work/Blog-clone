@@ -1,34 +1,34 @@
 <form name="container-form" class='mt-4' method="post" action="/courses/handle-trash-form">
-    <div>
-        <a href=" /me/stored/courses">Danh sách khóa học</a>
-        <h3>Khóa học đã xóa</h3>
-    </div>
 
+    <div>
+        <h3>Course deleted</h3>
+        <a href=" /me/stored/courses">My learning</a>
+    </div>
     <div class="d-flex align-items-center">
         <div class="form-check">
             <input class="form-check-input" type="checkbox" value="" id="check-all-selected">
             <label class="form-check-label" for="check-all-selected">
-                Chọn tất cả
+                Choose all
             </label>
         </div>
         <select class="form-control option-selected" name="action" required>
-            <option value="">-- Phương thức --</option>
-            <option value="delete">Xóa vĩnh viễn</option>
-            <option value="restore">Khôi phục</option>
+            <option value="">-- Option --</option>
+            <option value="delete">Force delete</option>
+            <option value="restore">Restore</option>
 
         </select>
-        <button class="btn btn-primary btn-sm btn-check-all-submit" disabled>Thực hiện</button>
+        <button class="btn btn-primary btn-sm btn-check-all-submit" disabled>Execute</button>
     </div>
 
 
-    <table class='table'>
+    <table class='table mt-4'>
         <thead>
             <tr>
                 <td></td>
                 <th scope='col'>#</th>
-                <th scope='col'>Tên khóa học</th>
-                <th scope='col'>Trình độ</th>
-                <th scope='col'>Thời gian xóa</th>
+                <th scope='col'>Course name</th>
+                <th scope='col'>Level</th>
+                <th scope='col'>Delete at</th>
                 <th scope='col'></th>
             </tr>
         </thead>
@@ -45,18 +45,18 @@
                 <td>{{this.level}}</td>
                 <td>{{this.deletedAt}}</td>
                 <td>
-                    <a href='' class='btn btn-link btn-restore' data-id="{{this._id}}">Khôi phục</a>
+                    <a href='' class='btn btn-link btn-restore' data-id="{{this._id}}">Restore</a>
                     {{!-- Định nghĩa trường data-id để lấy dữ liệu --}}
                     <a href='' class='btn btn-link' data-toggle='modal' data-target='#exampleModal'
-                        data-id='{{this._id}}'>Xóa vĩnh viễn</a>
+                        data-id='{{this._id}}'>Destroy</a>
                 </td>
             </tr>
 
             {{else}}
             <tr>
                 <td colspan="5" class="text-center">
-                    Thùng rác trống.
-                    <a href="/me/stored/courses">Danh sách khóa học</a>
+                    Trash empty.
+                    <a href="/me/stored/courses">My learning</a>
                 </td>
             </tr>
             {{/each}}
@@ -70,17 +70,17 @@
     <div class='modal-dialog'>
         <div class='modal-content'>
             <div class='modal-header'>
-                <h5 class='modal-title'>Xóa khóa học ?</h5>
+                <h5 class='modal-title'>Destroy this course ?</h5>
                 <button type='button' class='close' data-dismiss='modal' aria-label='Close'>
                     <span aria-hidden='true'>&times;</span>
                 </button>
             </div>
             <div class='modal-body'>
-                <p>Xóa vĩnh viễn khóa học này?</p>
+                <p>Do you actually want to destroy this course?</p>
             </div>
             <div class='modal-footer'>
-                <button type='button' class='btn btn-secondary' data-dismiss='modal'>Hủy</button>
-                <button id='btn-delete-course' type='button' class='btn btn-danger'>Xóa vĩnh viễn</button>
+                <button type='button' class='btn btn-secondary' data-dismiss='modal'>Cancle</button>
+                <button id='btn-delete-course' type='button' class='btn btn-danger'>Destroy</button>
             </div>
         </div>
     </div>

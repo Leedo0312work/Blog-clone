@@ -23,7 +23,6 @@ class CourseController {
 
   //[POST] /courses/store
   store(req, res, next) {
-    //formData.image = `https://www.youtube.com/watch?v=${req.body.videoID}`;
     const course = new Course(req.body);
     course
       .save()

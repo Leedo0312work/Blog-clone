@@ -2,17 +2,6 @@ const Course = require("../models/Courses");
 const { multipleMongooseToObject } = require("../../util/mongoose");
 
 class NewsController {
-  //[GET] /site
-  // async index(req, res, next) {
-  //   try {
-  //     const data = await Course.find({})
-  //     res.json(data)
-  //   } catch (err) {
-  //     next(err)
-  //   }
-  //   // res.render('home');
-  // }
-
   index(req, res, next) {
     Course.find({})
       .then((courses) => {

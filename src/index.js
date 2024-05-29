@@ -17,7 +17,7 @@ const port = 3000;
 //static file
 app.use(express.static(path.join(__dirname, "public")));
 
-//Middleware xử lý dữ liệu từ form
+//Middleware
 app.use(
   express.urlencoded({
     extended: true,
